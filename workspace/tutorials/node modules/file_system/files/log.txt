@@ -1,0 +1,3100 @@
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+Unix   1. Introduction    
+UNIX is an operating system which was first developed in the 1960s, and has been under constant development ever since. By operating system, we mean the suite of programs which make the computer work. It is a stable, multi-user, multi-tasking system for servers, desktops and laptops. 
+UNIX systems also have a graphical user interface (GUI) similar to Microsoft Windows which provides an easy to use environment. However, knowledge of UNIX is required for operations which aren't covered by a graphical program, or for when there is no windows interface available, for example, in a telnet session.
+There are many different versions of UNIX, although they share common similarities. The most popular varieties of UNIX are Sun Solaris, GNU/Linux, and MacOS X. 
+Learning UNIX (in very less time) is a mammoth task. Its learning curve is steep, but once you learn it, it would help you throughout your life, even in the fields beyond the scope of this course. UNIX is quite fun too. You merely have to follow a policy "just do it". So without any delay lets start off.
+Before starting the real deal with command line (shell), we will first learn ways to use UNIX in our system. Installing UNIX is very easy now a days. Here are the steps by which you can use UNIX in your system. 
+2.Unix Commands Course Contents | Prev : Next     
+So, lets start with our first hands on experience with the UNIX commands.
+
+Type "ls" in the command line and press enter. You can see that "ls" command is used to list all the files in the current working directory.
+  
+Username~$ ls
+everything.zip research-repo
+lock searchSuggest.php
+lock.c mdumpfile.txt 
+newcomp test
+Username~$ 
+  
+The next point to be noted is, even a simple command like "ls" can have complex sub-functions. For example, type "ls -l" in command line and press enter.
+  
+Username~$ ls -l
+total 1192
+-rwxr-xr- 1 Username Owner 7182 Apr 8 16:46 a.out
+-rw-rw-r-- 1 Username Owner 1619 Apr 8 16:46 compress.c
+-rw-rw-r-- 1 Username Owner 1062 Apr 7 13:09 compress.h
+-rw-rw-r-- 1 Username Owner 11200 Mar 3 14:29 data1
+-rw-rw-r-- 1 Username Owner 4579 Mar 4 14:33 data2
+-rw-r--r-- 1 Username Owner 104108 Feb 27 16:37 data3
+-rw-rw-r-- 1 Username Owner 52736 Mar 23 18:05 data4
+-rw-r--r-- 1 Username Owner 933322 Jun 11 2009 data5
+-rw-r--r-- 1 Username Owner 39424 Feb 27 16:37 data6
+-rw-r--r-- 1 Username Owner 29850 Mar 23 14:28 data7
+-rw-r--r-- 1 Username Owner 44 Apr 8 18:04 data8
+Username~$ 
+  
+You can see that "ls -l" is a long listing format and it gives you almost all information regarding the files in the current working directory.
+  
+Now lets try to dissect the output and see what each field in this output represents. 
+•	-rwxr-xr-                    -  File permissions
+•	1                                -  HardLink
+•	Username Owner  -  Owner and User details
+•	7182                         -  Size of file 
+•	Apr 8 16:46              -  Date/Time of last modification 
+•	a.out                          -  File name
+The number 1 you are seeing at second column is Hard link. Looking more in file permissions, we can see -rw-rw-r--, now these r/w/x have very significant role in UNIX. They define file permissions and can be used to assign permissions for a particular user.
+  
+Now you have learned that simple UNIX commands can have sub-functions which be used to produce complicated output. But complications does not stop here, two commands can be used simultaneously to produce highly configured and desired result.
+  
+For example try ls -l|grep Apr , this command can output all the files which were modified in April or has file name Apr (which is just a bleak possibility).
+
+You may learn more about UNIX from
+•	Learn all the eight tutorials Unix Tutorial for Beginners 
+
+•	Learn part 3http://www.ida.liu.se/~TDDI05/labs/LXB%20-%20Linux%20Basics.pdf 
+
+•	To learn more about ls output http://en.wikipedia.org/wiki/Ls#Sample_usage 
+
+•	To learn more about file permissions Filesystem permissions 
+
+•	To learn more about pipeline http://en.wikipedia.org/wiki/Pipeline_(Unix) 
+There is a good reason why generally people run away from Unix (Terminal). The reason is you need to learn many commands and there is no easy way to do it. 
+
+To make things easier have a UNIX command cheat-sheet with you. Here is a small UNIX cheat sheet, introducing the very basic and very essential commands for surviving in the UNIX world. 
+•	Check out http://www.tuxfiles.org/linuxhelp/linuxcommands.html 
+
+•	Check out http://www.pixelbeat.org/cmdline.html 
+These commands are just the surface of the ocean. There are many other commands also. But most important thing to keep in mind is not to cram UNIX commands but learn to use them.
+
+For now we will see a few single line commands doing wonderful tasks. 
+  
+Username~$ ls -l|cut -f1 -d" "
+total
+-rwxr-xr-x
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-rw-r--
+-rw-r--r--
+-rw-rw-r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+
+
+-rw-r--r--
+Username~$ 
+  
+As you can see the cut command can use space as delimiter and can diplay nth line. Try yourself, "ls -l|cut -f6 -d" "".
+
+Lets see another command which will list number of lines, word count and character count in a particular file, with that it will execute a command just to print header.
+  
+Username~$ printf " Lines Words Chars Filename\n" && wc compress.c
+Lines Words Chars Filename
+65 99 1619 compress.c
+Username~$ 
+  
+This command is significant because we ran two commands side by side, this is different from pipelining two commands. We have not redirected output of one command to another command. You yourself can try many commands side by side. (Be cautious while using rm command).
+
+TIP - To see what all a Linux command can do, type "man"command. This will show you the manual of the specified command.
+
+Using UNIX commands in a better way is an art. When these commands are used in a sequential format, it forms a very powerful language called SHELL SCRIPTING. 
+

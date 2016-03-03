@@ -1,0 +1,31 @@
+[{
+    "name": "David",
+    "designation": "SE",
+    "yob": 1991,
+    "doj": 2012,
+    "qualification": "CSE"
+}, {
+    "name": "Ram",
+    "designation": "AST",
+    "yob": 1985,
+    "doj": 2007,
+    "qualification": "IT"
+}, {
+    "name": "Gabriel",
+    "designation": "ASE-Trainee",
+    "yob": 1994,
+    "doj": 2015,
+    "qualification": "ECE"
+}, {
+    "name": "Gomez",
+    "designation": "SE",
+    "yob": 1991,
+    "doj": 2012,
+    "qualification": "ECE"
+}, {
+    "name": "Bernard",
+    "designation": "ASE",
+    "yob": 1993,
+    "doj": 2014,
+    "qualification": "CSE"
+}]

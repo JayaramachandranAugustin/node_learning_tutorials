@@ -1,0 +1,35 @@
+.center{
+	margin-top: 10%;
+	color:grey;
+	text-align: center;
+}
+
+.container{
+	padding: 5% 5%;
+	border-color: red;
+}
+.heading{
+	text-align: center;
+	color:grey;
+}
+.margin{
+	border-style: groove;
+	border-color: grey;
+}
+.creategroup{
+	display:inline-block;
+	margin: 0 auto;
+	color:#fff;
+	font-size:40px;
+	width:100%;
+	
+}
+.one{
+	width:75%;
+	float:left;
+}
+
+.two{
+	width:25%;
+	float:right;
+}
